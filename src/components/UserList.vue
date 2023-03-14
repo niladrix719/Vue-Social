@@ -6,7 +6,9 @@
 
     <!-- list of users -->
     <div id="user-list">
-      <UserCard />
+      <div v-for="user in users" :key="user.id">
+        <UserCard :user="user" />
+      </div>
     </div>
 
   </div>
@@ -14,10 +16,17 @@
 
 <script>
 import UserCard from './UserCard'
+import {mapState} from 'vuex'
 export default {
   name: 'UserList',
   components:{
     UserCard
+  },
+  computed:{
+    ...mapState(['users'])
+  },
+  created(){
+    this.$store.dispatch('getUsers')
   }
 }
 </script>
@@ -32,6 +41,8 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
   }
 
   #user-heading{

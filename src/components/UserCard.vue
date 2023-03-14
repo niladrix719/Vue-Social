@@ -2,8 +2,8 @@
   <router-link class="links" to="/post-list">
   <div class="user-card">
     <img src="../assets/dp.jpg" alt="Profile Picture" class="user-profile-picture">
-    <p class="user-email">rickyrickado14@gmail.com</p>
-    <h2 class="user-name">Niladri Adhikary</h2>
+    <p class="user-email">{{user.email}}</p>
+    <h2 class="user-name">{{user.name}}</h2>
     <button class="show-post-btn">Show Posts</button>
   </div>
 </router-link>
@@ -12,6 +12,9 @@
 <script>
 export default {
   name: 'UserCard',
+  props:{
+    user: Object
+  }
 }
 </script>
 
