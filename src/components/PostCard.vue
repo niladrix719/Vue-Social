@@ -29,7 +29,7 @@ export default {
 
 <style>
   .post-card{
-    color: black;
+    color: #344b5e;
     width: 100%;
     background-color: white;
     box-shadow: 0px 0px 20px 10px lightgrey;
