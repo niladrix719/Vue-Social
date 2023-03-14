@@ -36,7 +36,6 @@ export default {
 
   #user-heading{
     text-align: center;
-    color: #4d5ed3;
     margin-bottom: 3.5rem;
     margin-top: 2rem;
     border-bottom: 1px solid lightgrey;
