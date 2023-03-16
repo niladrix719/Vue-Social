@@ -12,45 +12,39 @@
     </div>
 
     <!-- pages navigations -->
-    <nav>
-      <button v-if="currentPage > 1" v-on:click="currentPage--">&lt;&lt;</button>
-      <button v-if="currentPage < noOfPages" v-on:click="currentPage++">&gt;&gt;</button>
-    </nav>
+    <PagesNavigation />
 
   </div>
 </template>
 
 <script>
+
+// importing components
 import UserCard from './UserCard'
-import {mapState} from 'vuex'
+import PagesNavigation from './PagesNavigation'
+
+// importing helper fuctions
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'UserList',
-  data(){
-    return{
-      pageSize : 10,
-      currentPage : 1
-    }
-  },
+
   components:{
-    UserCard
+    UserCard,
+    PagesNavigation
   },
+
   computed:{
-    ...mapState({
-      users : state => state.users
-    }),
-    displayUsers(){
-      let startIndex = (this.currentPage - 1) * this.pageSize;
-      let endIndex = startIndex + this.pageSize;
-      return this.users.slice(startIndex,endIndex);
-    },
-    noOfPages(){
-      return Math.ceil(this.users.length / this.pageSize);
-    }
+    ...mapGetters({
+      displayUsers : 'displayUsers'
+    })
   },
+
   created(){
     this.$store.dispatch('getUsers')
   }
 }
+
 </script>
 
 <style>
