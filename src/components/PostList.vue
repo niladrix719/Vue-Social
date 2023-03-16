@@ -9,18 +9,37 @@
 
     <!-- List of Posts -->
     <div id="post-list">
-      <PostCard />
+      <div v-for="post in posts" :key="post.id">
+        <PostCard :post="post" />
+      </div>
     </div>
+
+    <!-- pages navigations -->
+    <PagesNavigation />
     
   </div>
 </template>
 
 <script>
 import PostCard from './PostCard.vue'
+import PagesNavigation from './PagesNavigation'
+import {mapState} from 'vuex'
 export default {
   name: 'PostList',
+
+  computed:{
+    ...mapState({
+      posts : state => state.posts
+    })
+  },
+
   components: {
-    PostCard
+    PostCard,
+    PagesNavigation
+  },
+
+  created(){
+    this.$store.dispatch('getPosts')
   }
 }
 </script>

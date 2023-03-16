@@ -1,5 +1,5 @@
 <template>
-  <router-link class="links" to="/post-list">
+  <router-link class="links" :to="'/post-list/' + user.id">
   <div class="user-card">
     <img src="../assets/dp.jpg" alt="Profile Picture" class="user-profile-picture">
     <p class="user-email">{{user.email}}</p>

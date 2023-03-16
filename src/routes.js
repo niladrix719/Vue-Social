@@ -10,7 +10,7 @@ const routes=[
     },
     {
         name : 'PostList',
-        path: '/post-list',
+        path: '/post-list/:id',
         component: PostList
     }
 ]

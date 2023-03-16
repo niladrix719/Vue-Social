@@ -8,13 +8,8 @@
     <div>
       <h2 class="post-user-name">Niladri Adhikary </h2>
       <p class="post-email">rickyrickado14@gmail.com</p>
-      <h2 class="post-title">Title of the post</h2>
-      <p class="post-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <h2 class="post-title">{{post.title}}</h2>
+      <p class="post-para">{{post.body}}</p>
       <button class="view-post-btn">View Post</button>
     </div>
 
@@ -23,7 +18,10 @@
 
 <script>
 export default {
-  name: 'PostCard'
+  name: 'PostCard',
+  props:{
+    post: Object,
+  }
 }
 </script>
 
@@ -42,6 +40,7 @@ export default {
     transition: 0.2s ease-in-out;
     gap: 1rem;
     align-items: flex-start;
+    margin-bottom: 3rem;
   }
 
   .post-card:hover{

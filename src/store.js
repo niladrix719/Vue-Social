@@ -4,7 +4,8 @@ export default createStore({
   state:{
     pageSize : 10,
     currentPage : 1,
-    users: []
+    users: [],
+    posts: []
   },
 
   mutations:{
@@ -12,6 +13,11 @@ export default createStore({
     // setting users with data
     setUsers(state,payload){
       state.users = payload;
+    },
+
+    // setting posts with data
+    setPosts(state,payload){
+      state.posts = payload;
     },
     
     // increasing page no.
@@ -36,6 +42,16 @@ export default createStore({
         let doubledUsers = users.concat(reversedUsers);
         context.commit('setUsers',doubledUsers)
       })
+    },
+
+    //fetching post details
+
+    getPosts(context){
+      fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(posts => {
+        context.commit('setPosts',posts)
+      })
     }
   },
 
@@ -45,7 +61,11 @@ export default createStore({
       let endIndex = startIndex + state.pageSize;
       return state.users.slice(startIndex,endIndex);
     },
+    displayPosts(state){
+      return state.posts.filter()
+    },
     noOfPages(state){
+      console.log(state.noOfPages);
       return Math.ceil(state.users.length / state.pageSize);
     }
   }
