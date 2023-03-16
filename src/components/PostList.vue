@@ -1,12 +1,17 @@
 <template>
   <div id="posts">
     <router-link to="/"><button class="back-btn"> &lt;</button></router-link>
+
+    <!-- heading -->
     <div id="post-heading">
       <h1> Post Section</h1>
     </div>
+
+    <!-- List of Posts -->
     <div id="post-list">
       <PostCard />
     </div>
+    
   </div>
 </template>
 
