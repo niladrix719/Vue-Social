@@ -5,7 +5,11 @@ export default createStore({
     pageSize : 10,
     currentPage : 1,
     users: [],
-    posts: []
+    posts: [],
+    sort: false,
+    visible: false,
+    title: '',
+    body: ''
   },
 
   mutations:{
@@ -23,11 +27,30 @@ export default createStore({
     // increasing page no.
     increasePageNum(state){
       state.currentPage++;
+      state.sort = false;
     },
 
     // decreasing page no.
     decreasePageNum(state){
       state.currentPage--;
+      state.sort = false;
+    },
+
+    // toggling sort state
+    sortUser(state){
+      state.sort = !state.sort;
+    },
+
+    // setting values for clicked post
+    showModal(state,payload){
+      state.visible = true;
+      state.title = payload.title;
+      state.body = payload.body;
+    },
+
+    // Modal visibility is disabled
+    NoVisible(state){
+      state.visible = false;
     }
   },
 
@@ -62,7 +85,14 @@ export default createStore({
     displayUsers(state){
       let startIndex = (state.currentPage - 1) * state.pageSize;
       let endIndex = startIndex + state.pageSize;
-      return state.users.slice(startIndex,endIndex);
+      if(state.sort){
+        return state.users.slice(startIndex,endIndex).sort((a, b) => {
+          return a.name.localeCompare(b.name);
+        });
+      }
+      else{
+        return state.users.slice(startIndex,endIndex)
+      }
     },
 
     // displaying posts of specific user id
@@ -74,7 +104,6 @@ export default createStore({
     // calculating no of pages
 
     noOfPages(state){
-      console.log(state.noOfPages);
       return Math.ceil(state.users.length / state.pageSize);
     }
   }

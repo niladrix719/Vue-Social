@@ -4,6 +4,9 @@
     <!-- heading -->
     <h1 id="user-heading">Welcome to Vue-Social</h1>
 
+    <!-- sort by name toggle -->
+    <button v-on:click="sortUser()" id="sort-btn">Sort by Name</button>
+
     <!-- list of users -->
     <div id="user-list">
       <div v-for="user in displayUsers" :key="user.id">
@@ -24,7 +27,7 @@ import UserCard from './UserCard'
 import PagesNavigation from './PagesNavigation'
 
 // importing helper fuctions
-import {mapGetters} from 'vuex'
+import {mapGetters,mapMutations} from 'vuex'
 
 export default {
   name: 'UserList',
@@ -40,6 +43,12 @@ export default {
     })
   },
 
+  methods:{
+    ...mapMutations({
+      sortUser : 'sortUser'
+    })
+  },
+
   //sending request to fetch from api data after the component is created
   created(){
     this.$store.dispatch('getUsers')
@@ -52,6 +61,7 @@ export default {
   #users{
     width: 75%;
     margin: auto;
+    text-align: center;
   }
 
   #user-list{
@@ -68,5 +78,21 @@ export default {
     margin-top: 2rem;
     border-bottom: 1px solid lightgrey;
     padding-bottom: 2rem;
+  }
+
+  #sort-btn{
+    border: none;
+    margin-bottom: 3rem;
+    background-color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    padding-top: 0;
+    border-top: 6px solid transparent;
+  }
+
+  #sort-btn:hover{
+    background-color: #344b5e;
+    color: white;
   }
 </style>

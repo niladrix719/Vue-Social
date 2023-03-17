@@ -6,7 +6,7 @@
     <div id="post-heading">
       <h1> Post Section</h1>
     </div>
-
+    
     <!-- List of Posts -->
     <div id="post-list">
       <div v-for="post in posts" :key="post.id" id="posts-card-container">
@@ -16,6 +16,9 @@
 
     <!-- pages navigations -->
     <PagesNavigation />
+
+    <!-- Modal Dialog box -->
+    <PostModal />
     
   </div>
 </template>
@@ -23,6 +26,7 @@
 <script>
 import PostCard from './PostCard.vue'
 import PagesNavigation from './PagesNavigation'
+import PostModal from './PostModal.vue'
 import {mapState} from 'vuex'
 export default {
   name: 'PostList',
@@ -35,7 +39,8 @@ export default {
 
   components: {
     PostCard,
-    PagesNavigation
+    PagesNavigation,
+    PostModal
   },
   
   //sending request to fetch from api data after the component is created
@@ -77,6 +82,12 @@ export default {
     background-color: white;
     box-shadow: 0px 0px 20px 10px lightgrey;
     font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .back-btn:hover{
+    background-color: #344b5e;
+    color: white;
   }
 
   #posts-card-container{

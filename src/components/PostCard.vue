@@ -1,5 +1,5 @@
 <template>
-  <div class="post-card">
+  <div class="post-card" v-on:click="showModal({title : post.title, body : post.body})">
 
     <div>
       <img src="../assets/dp.jpg" alt="Profile Picture" class="post-profile-picture">
@@ -17,10 +17,18 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex' 
 export default {
   name: 'PostCard',
+
   props:{
-    post: Object,
+    post: Object
+  },
+
+  methods:{
+    ...mapMutations({
+      showModal : 'showModal'
+    })
   }
 }
 </script>
