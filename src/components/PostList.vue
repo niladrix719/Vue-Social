@@ -9,7 +9,7 @@
 
     <!-- List of Posts -->
     <div id="post-list">
-      <div v-for="post in posts" :key="post.id">
+      <div v-for="post in posts" :key="post.id" id="posts-card-container">
         <PostCard :post="post" />
       </div>
     </div>
@@ -37,7 +37,8 @@ export default {
     PostCard,
     PagesNavigation
   },
-
+  
+  //sending request to fetch from api data after the component is created
   created(){
     this.$store.dispatch('getPosts')
   }
@@ -76,5 +77,9 @@ export default {
     background-color: white;
     box-shadow: 0px 0px 20px 10px lightgrey;
     font-size: 2rem;
+  }
+
+  #posts-card-container{
+    width: 100%;
   }
 </style>

@@ -40,6 +40,7 @@ export default {
     })
   },
 
+  //sending request to fetch from api data after the component is created
   created(){
     this.$store.dispatch('getUsers')
   }

@@ -6,7 +6,9 @@
 </template>
 
 <script>
+//importing helper functions
 import {mapState,mapGetters,mapMutations} from 'vuex'
+
 export default {
   name: 'PagesNavigation',
   computed:{
@@ -15,7 +17,9 @@ export default {
     }),
     ...mapGetters({
       noOfPages : 'noOfPages'
-    }),
+    })
+  },
+  methods:{
     ...mapMutations({
       decreasePageNum : 'decreasePageNum',
       increasePageNum : 'increasePageNum'

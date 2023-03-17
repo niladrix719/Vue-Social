@@ -56,14 +56,23 @@ export default createStore({
   },
 
   getters: {
+
+    // displaying 10 users per page
+
     displayUsers(state){
       let startIndex = (state.currentPage - 1) * state.pageSize;
       let endIndex = startIndex + state.pageSize;
       return state.users.slice(startIndex,endIndex);
     },
+
+    // displaying posts of specific user id
+
     displayPosts(state){
       return state.posts.filter()
     },
+
+    // calculating no of pages
+
     noOfPages(state){
       console.log(state.noOfPages);
       return Math.ceil(state.users.length / state.pageSize);
