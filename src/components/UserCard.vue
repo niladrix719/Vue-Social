@@ -16,7 +16,7 @@ export default {
   name: 'UserCard',
   props:{
     user: Object
-  }
+  },
 }
 </script>
 

@@ -5,7 +5,7 @@
     <h1 id="user-heading">Welcome to Vue-Social</h1>
 
     <!-- sort by name toggle -->
-    <button v-on:click="sortUser()" id="sort-btn">Sort by Name</button>
+    <button v-on:click="sortUser()" :class="{clicked : sort}" id="sort-btn">Sort by Name</button>
 
     <!-- list of users -->
     <div id="user-list">
@@ -27,7 +27,7 @@ import UserCard from './UserCard'
 import PagesNavigation from './PagesNavigation'
 
 // importing helper fuctions
-import {mapGetters,mapMutations} from 'vuex'
+import {mapGetters,mapMutations,mapState} from 'vuex'
 
 export default {
   name: 'UserList',
@@ -38,6 +38,9 @@ export default {
   },
 
   computed:{
+    ...mapState({
+      sort : state => state.sort
+    }),
     ...mapGetters({
       displayUsers : 'displayUsers'
     })
@@ -91,7 +94,7 @@ export default {
     border-top: 6px solid transparent;
   }
 
-  #sort-btn:hover{
+  #sort-btn.clicked{
     background-color: #344b5e;
     color: white;
   }

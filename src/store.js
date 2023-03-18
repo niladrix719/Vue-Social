@@ -9,7 +9,8 @@ export default createStore({
     sort: false,
     visible: false,
     title: '',
-    body: ''
+    body: '',
+    displayPosts: []
   },
 
   mutations:{
@@ -51,6 +52,13 @@ export default createStore({
     // Modal visibility is disabled
     NoVisible(state){
       state.visible = false;
+    },
+
+    // displaying posts of specific user id
+
+    setDisplayPosts(state,payload){
+      console.log(payload.id);
+      state.displayPosts = state.posts.filter(post => post.userId == payload.id)
     }
   },
 
@@ -93,12 +101,6 @@ export default createStore({
       else{
         return state.users.slice(startIndex,endIndex)
       }
-    },
-
-    // displaying posts of specific user id
-
-    displayPosts(state){
-      return state.posts.filter()
     },
 
     // calculating no of pages

@@ -9,7 +9,7 @@
     
     <!-- List of Posts -->
     <div id="post-list">
-      <div v-for="post in posts" :key="post.id" id="posts-card-container">
+      <div v-for="post in displayPosts" :key="post.id" id="posts-card-container">
         <PostCard :post="post" />
       </div>
     </div>
@@ -27,13 +27,13 @@
 import PostCard from './PostCard.vue'
 import PagesNavigation from './PagesNavigation'
 import PostModal from './PostModal.vue'
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 export default {
   name: 'PostList',
 
   computed:{
     ...mapState({
-      posts : state => state.posts
+      displayPosts : state => state.displayPosts
     })
   },
 
@@ -43,9 +43,17 @@ export default {
     PostModal
   },
   
+  methods:{
+    ...mapMutations({
+      setDisplayPosts : 'setDisplayPosts'
+    })
+  },
+  
   //sending request to fetch from api data after the component is created
   created(){
+    console.log('created',this.$route.params.id)
     this.$store.dispatch('getPosts')
+    this.setDisplayPosts({id : this.$route.params.id})
   }
 }
 </script>

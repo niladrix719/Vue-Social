@@ -1,7 +1,7 @@
 <template>
   <nav>
     <button v-if="currentPageNum > 1" v-on:click="decreasePageNum">&lt;&lt;</button>
-    {{currentPageNum}}
+    <span>{{currentPageNum}}</span>
     <button v-if="currentPageNum < noOfPages" v-on:click="increasePageNum">&gt;&gt;</button>
   </nav>
 </template>
@@ -37,10 +37,17 @@ export default {
 
   button{
     cursor: pointer;
+    border: none;
   }
 
-  button:active{
+  button:active , span {
     background-color: #344b5e;
     color: white;
+  }
+
+  span{
+    padding: 0.15rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 </style>
