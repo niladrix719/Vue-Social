@@ -22,7 +22,8 @@ export default createStore({
 
     // setting posts with data
     setPosts(state,payload){
-      state.posts = payload;
+      state.posts = payload.posts;
+      state.displayPosts = state.posts.filter(post => post.userId == payload.id)
     },
     
     // increasing page no.
@@ -52,13 +53,6 @@ export default createStore({
     // Modal visibility is disabled
     NoVisible(state){
       state.visible = false;
-    },
-
-    // displaying posts of specific user id
-
-    setDisplayPosts(state,payload){
-      console.log(payload.id);
-      state.displayPosts = state.posts.filter(post => post.userId == payload.id)
     }
   },
 
@@ -77,11 +71,11 @@ export default createStore({
 
     //fetching post details
 
-    getPosts(context){
+    getPosts(context,payload){
       fetch('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.json())
       .then(posts => {
-        context.commit('setPosts',posts)
+        context.commit('setPosts',{posts: posts , id : payload.id});
       })
     }
   },

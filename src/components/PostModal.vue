@@ -8,7 +8,9 @@
 </template>
 
 <script>
-import {mapState,mapMutations} from 'vuex'  
+// importing helper functions  
+import {mapState,mapMutations} from 'vuex'
+
 export default {
   name: 'PostModal',
 

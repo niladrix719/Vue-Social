@@ -1,4 +1,5 @@
 <template>
+  <!-- sending data to display in modal -->
   <div class="post-card" v-on:click="showModal({title : post.title, body : post.body})">
 
     <div>

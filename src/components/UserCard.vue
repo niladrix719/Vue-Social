@@ -1,6 +1,6 @@
 <template>
 
-<router-link class="links" :to="'/post-list/' + user.id">
+<router-link class="links" :to="'/post-list/' + user.id"> <!-- sending UserID as url -->
   <div class="user-card">
     <img src="../assets/dp.jpg" alt="Profile Picture" class="user-profile-picture">
     <p class="user-email">{{user.email}}</p>

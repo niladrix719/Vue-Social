@@ -24,10 +24,14 @@
 </template>
 
 <script>
+// importing child components   
 import PostCard from './PostCard.vue'
 import PagesNavigation from './PagesNavigation'
 import PostModal from './PostModal.vue'
-import {mapState,mapMutations} from 'vuex'
+
+// importing helper functions
+import {mapState} from 'vuex'
+
 export default {
   name: 'PostList',
 
@@ -43,17 +47,9 @@ export default {
     PostModal
   },
   
-  methods:{
-    ...mapMutations({
-      setDisplayPosts : 'setDisplayPosts'
-    })
-  },
-  
-  //sending request to fetch from api data after the component is created
+  //sending request to fetch from api data after the component is created with userID
   created(){
-    console.log('created',this.$route.params.id)
-    this.$store.dispatch('getPosts')
-    this.setDisplayPosts({id : this.$route.params.id})
+    this.$store.dispatch('getPosts',{id : this.$route.params.id});
   }
 }
 </script>

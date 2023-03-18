@@ -1,7 +1,7 @@
 <template>
   <nav>
     <button v-if="currentPageNum > 1" v-on:click="decreasePageNum">&lt;&lt;</button>
-    <span>{{currentPageNum}}</span>
+    <span>{{currentPageNum}}</span> <!-- Displaying current Page -->
     <button v-if="currentPageNum < noOfPages" v-on:click="increasePageNum">&gt;&gt;</button>
   </nav>
 </template>
