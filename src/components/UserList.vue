@@ -55,6 +55,11 @@ export default {
   //sending request to fetch from api data after the component is created
   created(){
     this.$store.dispatch('getUsers')
+  },
+  
+  //scrolls window to top
+  beforeMount(){
+    window.scrollTo(0,0);
   }
 }
 

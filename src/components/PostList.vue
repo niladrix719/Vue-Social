@@ -50,6 +50,11 @@ export default {
   //sending request to fetch from api data after the component is created with userID
   created(){
     this.$store.dispatch('getPosts',{id : this.$route.params.id});
+  },
+  
+  //scrolls window to top
+  beforeMount(){
+    window.scrollTo(0,0);
   }
 }
 </script>
