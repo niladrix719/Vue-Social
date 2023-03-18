@@ -12,6 +12,7 @@ import {mapState,mapGetters,mapMutations} from 'vuex'
 
 export default {
   name: 'PagesNavigation',
+
   computed:{
     ...mapState({
       currentPageNum: state => state.currentPage
@@ -20,11 +21,18 @@ export default {
       noOfPages : 'noOfPages'
     })
   },
+
   methods:{
     ...mapMutations({
       decreasePageNum : 'decreasePageNum',
-      increasePageNum : 'increasePageNum'
+      increasePageNum : 'increasePageNum',
+      setPageNum : 'setPageNum'
     })
+  },
+  
+  // setting current page no. to 1
+  mounted(){
+    this.$store.commit('setPageNum');
   }
 }
 </script>

@@ -53,6 +53,11 @@ export default createStore({
     // Modal visibility is disabled
     NoVisible(state){
       state.visible = false;
+    },
+    
+    // setting current page no. to 1
+    setPageNum(state){
+      state.currentPage = 1;
     }
   },
 
